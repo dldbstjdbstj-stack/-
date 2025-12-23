@@ -1,23 +1,37 @@
-// 1. 딴짓 항목 설정 (이름, 시간, 아이콘)
+// 딴짓 항목 데이터 (총 11개로 대폭 추가!)
 const activities = [
-    { id: 1, icon: '🚽', name: '똥 타임', time: 15, count: 0 },
-    { id: 2, icon: '🚬', name: '담배/커피', time: 10, count: 0 },
-    { id: 3, icon: '📱', name: 'SNS 루팡', time: 5, count: 0 },
-    { id: 4, icon: '🛌', name: '멍 때리기', time: 5, count: 0 },
-    { id: 5, icon: '🛍️', name: '쇼핑하기', time: 20, count: 0 },
-    { id: 6, icon: '📺', name: '유튜브', time: 10, count: 0 }
+    // 기존 항목
+    { id: 1, icon: '🚽', name: '쾌변 타임', time: 15, count: 0 },
+    { id: 2, icon: '🚬', name: '흡연/커피', time: 10, count: 0 },
+    { id: 3, icon: '📱', name: 'SNS/카톡', time: 5, count: 0 },
+    { id: 4, icon: '🤤', name: '멍 때리기', time: 5, count: 0 },
+    { id: 5, icon: '🛍️', name: '몰래 쇼핑', time: 20, count: 0 },
+    { id: 6, icon: '📉', name: '주식/코인', time: 3, count: 0 },
+    
+    // 🔥 새로 추가된 재미있는 항목들
+    { id: 7, icon: '🌞', name: '광합성 산책', time: 20, count: 0 },
+    { id: 8, icon: '⌨️', name: '일하는 척', time: 30, count: 0 },
+    { id: 9, icon: '🍪', name: '탕비실 털기', time: 10, count: 0 },
+    { id: 10, icon: '🗣️', name: '동료랑 뒷담화', time: 15, count: 0 },
+    { id: 11, icon: '🧘', name: '회의 중 딴생각', time: 40, count: 0 }
 ];
 
-const salaryInput = document.getElementById('salary');
+const wageInput = document.getElementById('wageInput');
+const unitText = document.getElementById('unitText');
 const resultDiv = document.getElementById('result');
 
-// 2. 화면에 버튼 만들기
+// 초기화
 function init() {
     const listContainer = document.getElementById('activityList');
+    // 기존 리스트 초기화 (중복 방지)
+    listContainer.innerHTML = '';
+    
     activities.forEach(act => {
         const li = document.createElement('li');
         li.innerHTML = `
-            ${act.icon} ${act.name} (+${act.time}분)
+            <div style="font-size: 24px; margin-bottom: 5px;">${act.icon}</div>
+            <div style="font-weight: bold;">${act.name}</div>
+            <div style="font-size:12px; color:#888;">(+${act.time}분)</div>
             <span class="count-badge" id="badge-${act.id}">0</span>
         `;
         li.onclick = () => handleClick(act.id, li);
@@ -25,56 +39,69 @@ function init() {
     });
 }
 
-// 3. 버튼 클릭 시 처리
+// 직장인/알바생 전환 기능
+function toggleInput() {
+    const type = document.querySelector('input[name="wageType"]:checked').value;
+    if (type === 'salary') {
+        wageInput.placeholder = "월급(세전)을 만원 단위로 입력 (예: 300)";
+        unitText.innerText = "만원";
+    } else {
+        wageInput.placeholder = "시급을 원 단위로 입력 (예: 9860)";
+        unitText.innerText = "원";
+    }
+    calculate(); // 모드 바꾸면 재계산
+}
+
+// 클릭 이벤트
 function handleClick(id, element) {
     const activity = activities.find(a => a.id === id);
-    activity.count++; // 횟수 증가
-
-    // 배지(빨간 숫자) 업데이트
+    activity.count++; 
+    
+    // 배지 업데이트
     const badge = element.querySelector('.count-badge');
     badge.innerText = `x ${activity.count}`;
     badge.classList.add('show');
 
-    // 클릭 효과
+    // 클릭 효과 (잠깐 커졌다 작아짐)
     element.classList.add('active');
-    setTimeout(() => element.classList.remove('active'), 150);
+    setTimeout(() => element.classList.remove('active'), 100);
 
-    calculate(); // 돈 다시 계산
+    calculate();
 }
 
-// 4. 돈 계산 로직
+// 계산 로직 (핵심)
 function calculate() {
-    const salaryManwon = parseInt(salaryInput.value);
-    if (!salaryManwon || salaryManwon <= 0) return;
+    const wageValue = parseInt(wageInput.value);
+    if (!wageValue || wageValue <= 0) return;
 
-    // 전체 딴짓 시간 합계
+    const type = document.querySelector('input[name="wageType"]:checked').value;
+    let minuteWage = 0;
+
+    if (type === 'salary') {
+        // 월급: (월급 * 10000) / 209시간(약 12,540분)
+        minuteWage = (wageValue * 10000) / 12540;
+    } else {
+        // 시급: 시급 / 60분
+        minuteWage = wageValue / 60;
+    }
+
     const totalMinutes = activities.reduce((sum, act) => sum + (act.time * act.count), 0);
 
     if (totalMinutes > 0) {
-        // 월급을 분급으로 환산 (주 40시간 기준 월 209시간 = 12,540분)
-        // 간단하게 월 10,000분 정도로 계산 (한달 근무일 20일 * 8시간 * 60분 = 9600분)
-        const salaryWon = salaryManwon * 10000;
-        const minuteWage = salaryWon / 9600; 
         const lupinMoney = Math.floor(minuteWage * totalMinutes);
-
         document.getElementById('totalTime').innerText = totalMinutes;
         document.getElementById('totalMoney').innerText = lupinMoney.toLocaleString();
         resultDiv.classList.remove('hidden');
     }
 }
 
-// 5. 공유하기 버튼 기능
+// 공유하기
 function shareLink() {
     const url = window.location.href;
     navigator.clipboard.writeText(url).then(() => {
-        alert("링크가 복사되었습니다! \n카톡방에 붙여넣고 자랑해보세요 ㅋㅋ");
-    }).catch(() => {
-        alert("복사 실패! 주소창을 직접 복사해주세요.");
-    });
+        alert("링크 복사 완료! \n이 좋은 걸 너만 알거야? 얼른 공유해! 🤣");
+    }).catch(() => alert("주소창을 직접 복사해주세요 ㅠㅠ"));
 }
 
-// 월급 입력할 때도 실시간 계산
-salaryInput.addEventListener('input', calculate);
-
-// 시작!
+wageInput.addEventListener('input', calculate);
 init();

@@ -3,43 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>궁극의 월급루팡 계산기 Pro</title>
+    <title>월급루팡 계산기 - 회사에서 똥싸고 얼마 벌었을까?</title>
+    <meta name="description" content="월급루팡 계산기로 회사에서 딴짓한 시간의 가치를 확인하세요. 똥싸는 시간, 담배타임, 멍때리는 시간도 돈이 됩니다. 직장인, 알바생 필수 힐링 계산기!">
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3328426967741967"
      crossorigin="anonymous"></script>
 
     <meta property="og:title" content="월급루팡 계산기: 똥 싸고 얼마 벌었게? 💩">
-    <meta property="og:description" content="오늘 회사에서 딴짓한 시간으로 번 돈 계산해보자! 나는 이만큼 벌었다 ㅋㅋ">
+    <meta property="og:description" content="오늘 내가 루팡한 금액은 얼마? 직장인, 알바생 모두 컴온!">
     <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🚀 궁극의 월급루팡 계산기 Pro</h1>
-        <p class="subtitle">오늘도 정의로운 월급 도둑이 되어보자!</p>
+        <header>
+            <h1>💩 월급루팡 계산기</h1>
+            <p class="subtitle">내가 싼 똥, 회사가 산다!</p>
+        </header>
 
-        <div class="input-group">
-            <label for="salary">💸 내 월급 (세전, 만원)</label>
-            <input type="number" id="salary" placeholder="예: 300">
+        <div class="input-section">
+            <div class="wage-type">
+                <label><input type="radio" name="wageType" value="salary" checked onclick="toggleInput()"> 💼 직장인 (월급)</label>
+                <label><input type="radio" name="wageType" value="hourly" onclick="toggleInput()"> 🏪 알바생 (시급)</label>
+            </div>
+            
+            <div class="input-group">
+                <input type="number" id="wageInput" placeholder="월급(세전)을 만원 단위로 입력 (예: 300)">
+                <span id="unitText">만원</span>
+            </div>
         </div>
 
         <div class="lupin-activities">
-            <h2>오늘의 딴짓을 선택해! (클릭하면 횟수 증가)</h2>
+            <h3>오늘의 루팡 항목 (클릭!)</h3>
             <ul id="activityList">
                 </ul>
         </div>
 
         <div id="result" class="hidden">
-            <p class="total-time">총 <span id="totalTime">0</span>분 동안</p>
-            <p class="total-money"><span id="totalMoney">0</span>원</p>
-            <p class="message">을 꽁으로 벌었습니다! 🎉</p>
-            <p class="sub-message">사장님 몰래 개이득! 🤫</p>
-            
-            <div class="share-section">
-                <button id="shareBtn" onclick="shareLink()">🔗 링크 복사해서 친구한테 자랑하기</button>
+            <div class="result-box">
+                <p class="total-time">총 <span id="totalTime">0</span>분 루팡 성공!</p>
+                <p class="total-money"><span id="totalMoney">0</span>원</p>
+                <p class="message">벌었습니다! 💸</p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-share" onclick="shareLink()">🔗 친구한테 자랑하기 (공유)</button>
+                
+                <a href="https://link.coupang.com/a/dhjpMB" target="_blank" class="btn-coupang">
+                    🛍️ 훔친 월급 현물로 세탁하기 (쿠팡)
+                </a>
             </div>
         </div>
+
+        <section class="seo-text">
+            <h2>월급루팡 계산기란?</h2>
+            <p>
+                <strong>월급루팡 계산기</strong>는 직장인과 아르바이트생이 업무 시간에 화장실, 흡연, 커피 타임 등 
+                <strong>'딴짓'</strong>으로 보낸 시간을 돈으로 환산해주는 힐링 도구입니다. 
+                최저시급 계산은 물론, 내 연봉과 월급을 기준으로 1분당 가치를 계산하여 
+                회사에서 숨만 쉬어도 버는 돈을 정확히 알려드립니다.
+            </p>
+        </section>
+
+        <footer class="other-calculators">
+            <h3>🧮 다른 계산기 더보기</h3>
+            <div class="calc-list">
+                <a href="#">퇴직금 계산기</a>
+                <a href="#">연봉 실수령액 계산기</a>
+                <a href="#">비만도(BMI) 계산기</a>
+                <a href="#">퍼센트 계산기</a>
+            </div>
+            <p class="copyright">© 2025 CalcHub. All rights reserved.</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
