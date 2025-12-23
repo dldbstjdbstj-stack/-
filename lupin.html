@@ -3,299 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>월급 루팡 계산기 - 팩트폭격기</title>
-    <meta name="description" content="회사에서 딴짓한 시간만 입력하세요. 사장님 몰래 얼마나 벌었는지 계산해드립니다.">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <title>월급루팡 계산기 Pro</title>
+    <meta name="description" content="월급루팡 계산기: 회사에서 똥싸고, 멍때리고, 담배피는 시간도 돈이다!">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3328426967741967" crossorigin="anonymous"></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
-        /* 스타일은 기존과 동일하게 유지하여 안정성 확보 */
-        :root {
-            --primary-color: #3182f6;
-            --danger-color: #ff3b30;
-            --background-color: #f2f4f6;
-            --text-color: #191f28;
-            --input-bg: #f9fafb;
-        }
-
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            margin: 0; padding: 0; overflow-x: hidden; display: flex; justify-content: center;
-        }
-
-        .container {
-            width: 100%; max-width: 500px; min-height: 100vh;
-            background-color: #fff; padding: 20px 20px 80px; box-sizing: border-box; position: relative;
-        }
-
-        .nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .home-icon { font-size: 24px; text-decoration: none; color: #333; }
-
-        h2 { font-size: clamp(22px, 5vw, 26px); font-weight: 800; margin: 10px 0 10px; line-height: 1.3; word-break: keep-all; }
-        .subtitle { color: #8b95a1; font-size: 14px; margin-bottom: 25px; }
-
-        .input-group { margin-bottom: 20px; }
-        label { display: block; font-size: 14px; color: #8b95a1; margin-bottom: 8px; font-weight: 600; }
-        input {
-            width: 100%; padding: 14px; font-size: 16px; border: 1px solid transparent;
-            background-color: var(--input-bg); border-radius: 12px; box-sizing: border-box;
-            transition: 0.2s; font-weight: 600; color: #333;
-        }
-        input:focus { outline: none; background-color: #fff; border: 1px solid var(--primary-color); box-shadow: 0 0 0 3px rgba(49, 130, 246, 0.1); }
-
-        .activity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
-        .act-btn {
-            background-color: var(--input-bg); border: 1px solid transparent;
-            border-radius: 10px; padding: 12px 4px; cursor: pointer; transition: all 0.2s; text-align: center;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .act-btn:active { transform: scale(0.96); background-color: #e8f3ff; border-color: var(--primary-color); }
-        .act-icon { font-size: 20px; margin-bottom: 4px; }
-        .act-name { font-size: 12px; font-weight: 600; color: #333; word-break: keep-all;}
-        .act-time { font-size: 10px; color: #888; margin-top: 2px;}
-
-        .total-time-box { margin-top: 15px; padding: 15px; background-color: #e8f3ff; border-radius: 12px; color: var(--primary-color); font-weight: 700; text-align: center; font-size: 16px; }
-
-        .cta-button {
-            width: 100%; padding: 16px; background-color: var(--primary-color);
-            color: white; border: none; border-radius: 14px; font-size: 17px; font-weight: 700;
-            cursor: pointer; margin-top: 20px; transition: background-color 0.2s; box-shadow: 0 4px 10px rgba(49, 130, 246, 0.2);
-        }
-        .cta-button:hover { background-color: #1b64da; }
-
-        #result-area { display: none; margin-top: 40px; text-align: center; border-top: 2px dashed #f2f4f6; padding-top: 40px; padding-bottom: 20px; }
-
-        .rank-badge { display: inline-block; padding: 6px 12px; border-radius: 20px; background-color: #ffeaea; color: var(--danger-color); font-size: 13px; font-weight: 800; margin-bottom: 10px; }
-        .result-amount { font-size: clamp(32px, 8vw, 42px); font-weight: 900; color: var(--text-color); letter-spacing: -1px; margin-bottom: 10px; }
-        .result-sub { font-size: 15px; color: #6b7684; margin-bottom: 30px; }
-        
-        .fact-box { background-color: #f9f9f9; padding: 20px; border-radius: 16px; text-align: left; margin-bottom: 20px; }
-        .fact-title { font-size: 13px; color: #8b95a1; font-weight: 600; margin-bottom: 6px; }
-        .fact-text { font-size: 16px; font-weight: 700; line-height: 1.5; word-break: keep-all; }
-        .highlight { color: var(--primary-color); background: rgba(49, 130, 246, 0.1); padding: 0 4px; border-radius: 4px; }
-
-        .coupang-wrapper { margin-top: 30px; position: relative; width: 100%; }
-        .coupang-btn {
-            display: flex; justify-content: space-between; align-items: center;
-            text-decoration: none;
-            background: linear-gradient(95deg, #3182f6 0%, #0055ff 100%);
-            color: white; padding: 16px 20px; border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(49, 130, 246, 0.3);
-            animation: pulse 2s infinite;
-            box-sizing: border-box;
-        }
-        .coupang-text-main { font-size: 16px; font-weight: 700; white-space: nowrap; }
-        .coupang-text-sub { font-size: 11px; opacity: 0.9; font-weight: 400; margin-top: 2px; }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(49, 130, 246, 0.4); }
-            70% { box-shadow: 0 0 0 8px rgba(49, 130, 246, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(49, 130, 246, 0); }
-        }
-
-        .partners-info { font-size: 10px; color: #b0b8c1; margin-top: 10px; text-align: center; line-height: 1.4; }
-        .ad-space { margin-top: 30px; padding: 20px; background-color: #f2f4f6; border-radius: 12px; color: #ccc; font-size: 12px; text-align: center; }
-        .home-btn-area { margin-top: 20px; }
-        .btn-home { display: block; width: 100%; padding: 16px; background-color: #fff; border: 2px solid #e5e8eb; border-radius: 14px; color: #333; font-size: 15px; font-weight: 700; text-align: center; text-decoration: none; cursor: pointer; transition: 0.2s; box-sizing: border-box; }
-        .btn-home:hover { background-color: #f2f4f6; }
-
-        @media (max-width: 340px) { .activity-grid { grid-template-columns: repeat(2, 1fr); } .result-amount { font-size: 28px; } h2 { font-size: 20px; } }
+        :root { --primary: #3182f6; --bg: #f2f4f6; --text-main: #191f28; --text-sub: #8b95a1; --white: #ffffff; }
+        body { font-family: 'Pretendard', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; color: var(--text-main); }
+        .app-container { background-color: var(--white); max-width: 480px; width: 100%; border-radius: 24px; padding: 30px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; text-align: center; }
+        .subtitle { font-size: 15px; color: var(--text-sub); text-align: center; margin-bottom: 30px; }
+        .tab-switch { display: flex; background-color: #f2f4f6; padding: 4px; border-radius: 12px; margin-bottom: 25px; }
+        .tab-btn { flex: 1; border: none; background: none; padding: 10px; font-size: 14px; font-weight: 600; color: var(--text-sub); cursor: pointer; border-radius: 10px; transition: all 0.2s; }
+        .tab-btn.active { background-color: var(--white); color: var(--text-main); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .input-area { margin-bottom: 30px; text-align: center; }
+        .input-wrapper { display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2px solid var(--bg); padding-bottom: 10px; }
+        input[type="number"] { border: none; font-size: 32px; font-weight: 800; width: 180px; text-align: right; outline: none; background: transparent; }
+        .section-title { font-size: 16px; font-weight: 700; color: var(--text-sub); margin-bottom: 15px; }
+        .grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
+        .card-btn { background-color: var(--white); border: 1px solid #e5e8eb; border-radius: 16px; padding: 16px; cursor: pointer; position: relative; transition: all 0.2s; }
+        .card-btn:active { transform: scale(0.96); background-color: #f9fafb; }
+        .card-btn.clicked { border-color: var(--primary); background-color: #f0f7ff; }
+        .card-icon { font-size: 28px; display: block; margin-bottom: 8px; }
+        .card-name { font-size: 15px; font-weight: 700; display: block; }
+        .card-time { font-size: 12px; color: var(--text-sub); }
+        .badge { position: absolute; top: 12px; right: 12px; background-color: #ff5252; color: white; font-size: 11px; padding: 2px 6px; border-radius: 99px; font-weight: 800; opacity: 0; transform: scale(0.5); transition: all 0.2s; }
+        .badge.show { opacity: 1; transform: scale(1); }
+        #result-box { background-color: #f2f4f6; border-radius: 20px; padding: 24px; text-align: center; margin-top: 20px; display: none; animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .result-money { font-size: 36px; font-weight: 900; color: var(--primary); margin: 5px 0; }
+        .btn { width: 100%; padding: 16px; border-radius: 14px; border: none; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; display: flex; justify-content: center; align-items: center; text-decoration: none; box-sizing: border-box; }
+        .btn-kakao { background-color: #fee500; color: #3c1e1e; }
+        .btn-coupang { background-color: #3182f6; color: white; }
+        .btn-home { background-color: #fff; border: 1px solid #ddd; color: #333; margin-top: 20px; }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="nav-header">
-        <a href="index.html" class="home-icon">🏠</a>
-        <span style="font-size:13px; color:#888; font-weight:600;">머니해커</span>
-    </div>
-
-    <h1 style="display:none;">월급 루팡 계산기</h1>
-    <h2>당신은 회사에서<br>얼마나 훔치고 있습니까?</h2>
-    <p class="subtitle">솔직하게 터치하세요. 사장님은 모릅니다.</p>
-
-    <div class="input-group">
-        <label>월급 (세후 실수령액, 만원)</label>
-        <input type="number" id="salary" placeholder="예: 300" inputmode="numeric">
-    </div>
-
-    <div class="input-group">
-        <label>하루 근무 시간</label>
-        <input type="number" id="workHours" value="8" inputmode="numeric">
-    </div>
-
-    <div class="input-group">
-        <label>오늘의 루팡 활동 (터치)</label>
-        <div class="activity-grid">
-            <button class="act-btn" onclick="addTime(10)">
-                <span class="act-icon">💩</span>
-                <span class="act-name">화장실</span>
-                <span class="act-time">+10분</span>
-            </button>
-            <button class="act-btn" onclick="addTime(5)">
-                <span class="act-icon">📱</span>
-                <span class="act-name">카톡</span>
-                <span class="act-time">+5분</span>
-            </button>
-            <button class="act-btn" onclick="addTime(15)">
-                <span class="act-icon">🚬</span>
-                <span class="act-name">담배</span>
-                <span class="act-time">+15분</span>
-            </button>
-            <button class="act-btn" onclick="addTime(20)">
-                <span class="act-icon">☕</span>
-                <span class="act-name">커피</span>
-                <span class="act-time">+20분</span>
-            </button>
-            <button class="act-btn" onclick="addTime(30)">
-                <span class="act-icon">😮</span>
-                <span class="act-name">멍때림</span>
-                <span class="act-time">+30분</span>
-            </button>
-            <button class="act-btn" onclick="addTime(5)">
-                <span class="act-icon">📉</span>
-                <span class="act-name">주식</span>
-                <span class="act-time">+5분</span>
-            </button>
+    <div class="app-container">
+        <h1>💩 월급루팡 계산기</h1>
+        <p class="subtitle">티끌 모아 태산, 똥 모아 치킨</p>
+        <div class="tab-switch">
+            <button class="tab-btn active" onclick="setMode('salary')">💼 직장인</button>
+            <button class="tab-btn" onclick="setMode('hourly')">🏪 알바생</button>
         </div>
-        
-        <div class="total-time-box">
-            현재 <span id="displayTime" style="font-size: 20px; text-decoration: underline;">0</span>분 째 루팡 중...🤫
-        </div>
-        <input type="hidden" id="lupinTime" value="0">
-        
-        <div style="text-align: right; margin-top: 5px;">
-            <span onclick="resetTime()" style="font-size: 12px; color: #888; text-decoration: underline; cursor: pointer;">시간 초기화</span>
-        </div>
-    </div>
-
-    <button class="cta-button" onclick="calculate()">💸 횡령 금액 확인하기</button>
-
-    <div id="result-area">
-        <div id="rankBadge" class="rank-badge">LV.1 귀여운 월급 도둑</div>
-        <div class="result-amount" id="resultMoney">0원</div>
-        <div class="result-sub">만큼 일 안 하고 벌었습니다!</div>
-        
-        <div class="fact-box">
-            <div class="fact-title">팩트 폭격</div>
-            <div class="fact-text" id="factText">
-                사장님 돈으로 <span class="highlight">치킨 0마리</span>를<br>공짜로 먹은 셈이네요.
+        <div class="input-area">
+            <div class="input-wrapper">
+                <input type="number" id="moneyInput" placeholder="300" oninput="calculate()">
+                <span id="unitText" style="font-size: 20px; font-weight: 600;">만원</span>
             </div>
         </div>
-
-        <div class="coupang-wrapper">
-            <a href="https://link.coupang.com/a/dhgEbz" class="coupang-btn" target="_blank">
-                <div>
-                    <div class="coupang-text-main">🚀 훔친 월급, 현물로 세탁하기</div>
-                    <div class="coupang-text-sub" id="coupangSubText">클릭해서 전리품 챙기기 ></div>
-                </div>
-                <span>➔</span>
-            </a>
-            <div class="partners-info">
-                이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br>이에 따른 일정액의 수수료를 제공받습니다.
-            </div>
-        </div>
-
-        <div class="ad-space" style="padding:0; background:none;">
-            [구글 애드센스 광고 영역]
+        <div class="section-title">오늘의 루팡 항목 👇</div>
+        <div class="grid-list" id="gridList"></div>
+        
+        <div id="result-box">
+            <div>총 <span id="resTime">0</span>분 놀아서</div>
+            <div class="result-money"><span id="resMoney">0</span>원</div>
+            <div>회삿돈 꿀꺽했습니다! 💸</div>
+            <button class="btn btn-kakao" onclick="shareKakao()">🔗 친구에게 자랑하기</button>
+            <a href="https://link.coupang.com/a/dhjpMB" target="_blank" class="btn btn-coupang">🛍️ 훔친 월급 세탁하기</a>
         </div>
         
-        <div class="home-btn-area">
-            <a href="index.html" class="btn-home">
-                🏠 다른 계산기 더 보러가기
-            </a>
-        </div>
+        <a href="index.html" class="btn btn-home">🏠 다른 계산기 더보기 (홈으로)</a>
     </div>
-</div>
 
-<script>
-    let currentLupinTime = 0;
-
-    function addTime(minutes) {
-        currentLupinTime += minutes;
-        updateTimeDisplay();
-    }
-
-    function resetTime() {
-        currentLupinTime = 0;
-        updateTimeDisplay();
-    }
-
-    function updateTimeDisplay() {
-        document.getElementById('lupinTime').value = currentLupinTime;
-        document.getElementById('displayTime').innerText = currentLupinTime;
-    }
-
-    function calculate() {
-        const salary = document.getElementById('salary').value * 10000;
-        const workHours = document.getElementById('workHours').value;
-        const lupinTime = currentLupinTime;
-
-        if (!salary) {
-            alert("월급을 입력해야 계산해줍니다!");
-            document.getElementById('salary').focus();
-            return;
+    <script>
+        const items = [
+            { id: 'poop', icon: '🚽', name: '쾌변 타임', time: 15 },
+            { id: 'smoke', icon: '🚬', name: '흡연/커피', time: 10 },
+            { id: 'sns', icon: '📱', name: 'SNS/카톡', time: 5 },
+            { id: 'spaced', icon: '🤤', name: '멍 때리기', time: 5 },
+            { id: 'shop', icon: '🛍️', name: '몰래 쇼핑', time: 20 },
+            { id: 'stock', icon: '📉', name: '주식/코인', time: 3 },
+            { id: 'walk', icon: '🌞', name: '산책하기', time: 20 },
+            { id: 'fake', icon: '⌨️', name: '일하는 척', time: 30 },
+            { id: 'snack', icon: '🍪', name: '탕비실 털기', time: 10 },
+            { id: 'talk', icon: '🗣️', name: '동료랑 뒷담', time: 15 },
+            { id: 'meeting', icon: '🧘', name: '회의중 딴생각', time: 40 }
+        ];
+        let counts = {}; let currentMode = 'salary';
+        const grid = document.getElementById('gridList');
+        items.forEach(item => {
+            counts[item.id] = 0;
+            const div = document.createElement('div');
+            div.className = 'card-btn';
+            div.onclick = () => addCount(item.id, div);
+            div.innerHTML = `<span class="card-icon">${item.icon}</span><span class="card-name">${item.name}</span><span class="card-time">+${item.time}분</span><span class="badge" id="badge-${item.id}">0</span>`;
+            grid.appendChild(div);
+        });
+        function setMode(mode) {
+            currentMode = mode;
+            const btns = document.querySelectorAll('.tab-btn');
+            const input = document.getElementById('moneyInput');
+            const unit = document.getElementById('unitText');
+            if (mode === 'salary') { btns[0].classList.add('active'); btns[1].classList.remove('active'); input.placeholder = "300"; unit.innerText = "만원"; } 
+            else { btns[0].classList.remove('active'); btns[1].classList.add('active'); input.placeholder = "9860"; unit.innerText = "원"; }
+            calculate();
         }
-        
-        if (lupinTime === 0) {
-            alert("에이 설마... 딴짓 하나라도 선택해주세요!");
-            return;
+        function addCount(id, element) {
+            counts[id]++;
+            const badge = document.getElementById(`badge-${id}`); badge.innerText = `x${counts[id]}`; badge.classList.add('show');
+            element.classList.add('clicked'); setTimeout(() => element.classList.remove('clicked'), 100); calculate();
         }
-
-        const minWage = salary / (20 * workHours * 60);
-        const earnedMoney = Math.floor(minWage * lupinTime);
-
-        let rank = "";
-        let msg = "";
-        let coupangSub = "";
-
-        // 메인 문구는 고정이고, 서브 텍스트(작은 글씨)만 금액별로 바뀜
-        if (earnedMoney < 5000) {
-            rank = "LV.1 소심한 월급 루팡";
-            msg = `이 정도면 <span class='highlight'>양심적인 노예</span>입니다.<br>좀 더 분발하세요.`;
-            coupangSub = "🍬 소소하게 껌값 벌러가기 (클릭)";
-        } else if (earnedMoney < 20000) {
-            rank = "LV.10 프로 딴짓러";
-            msg = `축하합니다! 앉은 자리에서 <span class='highlight'>치킨 1마리</span>를<br>사장님 지갑에서 훔쳤습니다.`;
-            coupangSub = "🍗 치킨값 굳었으니 간식 사기";
-        } else if (earnedMoney < 50000) {
-            rank = "LV.50 회사 기생충";
-            msg = `당신은 회사의 <span class='highlight'>재정 위기</span> 주범입니다.<br>이 돈이면 회식도 가능합니다.`;
-            coupangSub = "🛒 합법적 횡령 쇼핑 시작하기";
-        } else {
-            rank = "LV.99 전설의 대도";
-            msg = `이쯤 되면 <span class='highlight'>월급을 받는 게 기적</span>입니다.<br>해고당하기 전에 빨리 쇼핑하세요.`;
-            coupangSub = "💎 짤리기 전에 탕진하러 가기";
-        }
-
-        document.getElementById('rankBadge').innerText = rank;
-        document.getElementById('factText').innerHTML = msg;
-        document.getElementById('coupangSubText').innerText = coupangSub;
-        
-        animateValue("resultMoney", 0, earnedMoney, 1000);
-        
-        const resultArea = document.getElementById('result-area');
-        resultArea.style.display = 'block';
-        
-        setTimeout(() => {
-            resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-    }
-
-    function animateValue(id, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const value = Math.floor(progress * (end - start) + start);
-            document.getElementById(id).innerText = value.toLocaleString() + "원";
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
+        function calculate() {
+            const moneyVal = parseInt(document.getElementById('moneyInput').value); if (!moneyVal) return;
+            let minuteWage = currentMode === 'salary' ? (moneyVal * 10000) / 209 / 60 : moneyVal / 60;
+            let totalMin = 0; items.forEach(item => totalMin += (item.time * counts[item.id]));
+            if (totalMin > 0) {
+                document.getElementById('resTime').innerText = totalMin;
+                document.getElementById('resMoney').innerText = Math.floor(minuteWage * totalMin).toLocaleString();
+                document.getElementById('result-box').style.display = 'block';
             }
-        };
-        window.requestAnimationFrame(step);
-    }
-</script>
-
+        }
+        function shareKakao() {
+            navigator.clipboard.writeText(window.location.href).then(() => alert("링크 복사 완료!")).catch(() => alert("주소창을 복사해주세요!"));
+        }
+    </script>
 </body>
 </html>
