@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>월급루팡 계산기 Pro - 내가 싼 똥, 회사가 산다!</title>
     <meta name="description" content="회사에서 화장실 가고 멍때리는 시간도 돈이 됩니다. 직장인, 알바생을 위한 힐링 시급 계산기.">
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3328426967741967" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
     <style>
         :root { --primary: #3182f6; --bg: #f2f4f6; --text-main: #191f28; --text-sub: #8b95a1; --white: #ffffff; }
         body { font-family: 'Pretendard', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; color: var(--text-main); }
@@ -29,14 +32,19 @@
         .card-time { font-size: 12px; color: var(--text-sub); }
         .badge { position: absolute; top: 12px; right: 12px; background-color: #ff5252; color: white; font-size: 11px; padding: 2px 6px; border-radius: 99px; font-weight: 800; opacity: 0; transform: scale(0.5); transition: all 0.2s; }
         .badge.show { opacity: 1; transform: scale(1); }
+        
         #result-box { background-color: #f2f4f6; border-radius: 20px; padding: 24px; text-align: center; margin-top: 20px; display: none; animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .result-money { font-size: 36px; font-weight: 900; color: var(--primary); margin: 5px 0; }
+        
         .btn { width: 100%; padding: 16px; border-radius: 14px; border: none; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; display: flex; justify-content: center; align-items: center; text-decoration: none; box-sizing: border-box; }
         .btn-kakao { background-color: #fee500; color: #3c1e1e; }
         .btn-coupang { background-color: #3182f6; color: white; }
         .btn-home { background-color: #fff; border: 1px solid #ddd; color: #333; margin-top: 20px; }
         
+        /* 쿠팡 파트너스 고지 문구 스타일 */
+        .coupang-notice { font-size: 11px; color: #999; margin-top: 8px; line-height: 1.4; word-break: keep-all; }
+
         /* SEO 드롭박스 */
         .seo-accordion { margin-top: 40px; border-top: 1px solid #e5e8eb; padding-top: 20px; }
         details { background: #f9fafb; border-radius: 16px; padding: 15px; cursor: pointer; transition: 0.2s; }
@@ -69,8 +77,11 @@
             <div>총 <span id="resTime">0</span>분 놀아서</div>
             <div class="result-money"><span id="resMoney">0</span>원</div>
             <div>회삿돈 꿀꺽했습니다! 💸</div>
+            
             <button class="btn btn-kakao" onclick="shareKakao()">🔗 친구에게 자랑하기</button>
+            
             <a href="https://link.coupang.com/a/dhjpMB" target="_blank" class="btn btn-coupang">🛍️ 훔친 월급 세탁하기</a>
+            <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br>이에 따른 일정액의 수수료를 제공받습니다.</p>
         </div>
         
         <div class="seo-accordion">
