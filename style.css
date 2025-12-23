@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 { margin: 0; color: #333; font-size: 24px; }
+.subtitle { color: #666; margin-bottom: 30px; }
+
+.input-group { margin-bottom: 25px; text-align: left; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+.input-group input {
+    width: 100%; padding: 12px; border: 2px solid #ddd;
+    border-radius: 8px; font-size: 16px; box-sizing: border-box;
+}
+
+.lupin-activities ul {
+    list-style: none; padding: 0;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+
+.lupin-activities li {
+    background-color: white; padding: 15px; border-radius: 12px;
+    border: 2px solid #ddd; cursor: pointer; text-align: center;
+    font-weight: bold; position: relative; /* 배지 위치 기준 */
+    user-select: none;
+}
+
+/* 클릭 횟수 배지 (빨간 동그라미) */
+.count-badge {
+    position: absolute; top: -8px; right: -8px;
+    background-color: #ff4757; color: white;
+    font-size: 11px; padding: 3px 8px; border-radius: 10px;
+    font-weight: bold; display: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.count-badge.show { display: inline-block; }
+
+.lupin-activities li:hover { background-color: #e3f2fd; border-color: #2196f3; }
+.lupin-activities li.active {
+    background-color: #bbdefb; border-color: #1976d2; transform: scale(0.98);
+}
+
+#result {
+    margin-top: 30px; padding: 20px; background-color: #fff9c4;
+    border-radius: 15px; animation: popUp 0.3s ease-out;
+}
+#result.hidden { display: none; }
+
+.total-time { font-size: 18px; color: #555; margin: 0; }
+.total-money { font-size: 32px; font-weight: bold; color: #d32f2f; margin: 10px 0; }
+.message { font-size: 18px; font-weight: bold; margin: 0; }
+.sub-message { font-size: 14px; color: #777; margin-top: 5px; }
+
+/* 공유 버튼 */
+.share-section { margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px; }
+#shareBtn {
+    background-color: #fee500; color: #3c1e1e; border: none;
+    padding: 10px 20px; font-size: 15px; font-weight: bold;
+    border-radius: 8px; cursor: pointer; width: 100%;
+}
+#shareBtn:hover { background-color: #fdd835; }
+
+@keyframes popUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

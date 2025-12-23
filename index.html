@@ -2,176 +2,46 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>머니해커 - 돈이 되는 계산기</title>
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
-    <style>
-        :root {
-            --primary-color: #3182f6;
-            --background-color: #f2f4f6;
-            --text-color: #191f28;
-            --sub-text-color: #8b95a1;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>궁극의 월급루팡 계산기 Pro</title>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3328426967741967"
+     crossorigin="anonymous"></script>
 
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .app-container {
-            width: 100%;
-            max-width: 600px;
-            min-height: 100vh;
-            background-color: var(--background-color);
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        header {
-            padding: 40px 10px 30px;
-        }
-
-        h1 {
-            font-size: 26px;
-            font-weight: 800;
-            margin: 0 0 10px 0;
-            line-height: 1.3;
-        }
-
-        p.subtitle {
-            font-size: 16px;
-            color: var(--sub-text-color);
-            margin: 0;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 24px 20px;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 140px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:active {
-            transform: scale(0.98);
-        }
-
-        .card-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
-
-        .card-title {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            line-height: 1.4;
-        }
-
-        .card-desc {
-            font-size: 13px;
-            color: var(--sub-text-color);
-        }
-
-        /* 뱃지 스타일 */
-        .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: #ff3b30;
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 20px;
-        }
-
-        .ad-banner {
-            margin-top: 30px;
-            background: #fff;
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            color: #ddd;
-            font-size: 12px;
-            box-shadow: var(--shadow);
-        }
-
-        /* 반응형: 작은 화면 */
-        @media (max-width: 360px) {
-            .grid { grid-template-columns: 1fr; }
-            .card { height: auto; padding: 20px; }
-        }
-    </style>
+    <meta property="og:title" content="월급루팡 계산기: 똥 싸고 얼마 벌었게? 💩">
+    <meta property="og:description" content="오늘 회사에서 딴짓한 시간으로 번 돈 계산해보자! 나는 이만큼 벌었다 ㅋㅋ">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>🚀 궁극의 월급루팡 계산기 Pro</h1>
+        <p class="subtitle">오늘도 정의로운 월급 도둑이 되어보자!</p>
 
-    <div class="app-container">
-        <header>
-            <h1>오늘도 당신의 돈을<br>지켜드릴게요</h1>
-            <p class="subtitle">스마트한 금융/생활 계산기 모음</p>
-        </header>
-
-        <div class="grid">
-            <a href="lupin.html" class="card">
-                <span class="badge">HOT</span>
-                <div class="card-icon">💸</div>
-                <div>
-                    <div class="card-title">월급 루팡<br>계산기</div>
-                    <div class="card-desc">똥 싸면서 번 돈은?</div>
-                </div>
-            </a>
-
-            <div class="card" onclick="alert('곧 업데이트 됩니다!')" style="opacity: 0.7;">
-                <div class="card-icon">💘</div>
-                <div>
-                    <div class="card-title">그린라이트<br>판독기</div>
-                    <div class="card-desc">그 사람의 마음은?</div>
-                </div>
-            </div>
-
-            <div class="card" onclick="alert('곧 업데이트 됩니다!')" style="opacity: 0.7;">
-                <div class="card-icon">💪</div>
-                <div>
-                    <div class="card-title">3대 500<br>측정기</div>
-                    <div class="card-desc">헬스 전투력 측정</div>
-                </div>
-            </div>
-
-            <div class="card" onclick="alert('곧 업데이트 됩니다!')" style="opacity: 0.7;">
-                <div class="card-icon">☕</div>
-                <div>
-                    <div class="card-title">카페인<br>수혈기</div>
-                    <div class="card-desc">커피 허용량 계산</div>
-                </div>
-            </div>
+        <div class="input-group">
+            <label for="salary">💸 내 월급 (세전, 만원)</label>
+            <input type="number" id="salary" placeholder="예: 300">
         </div>
 
-        <div class="ad-banner">
-            [Google Ads Area]
+        <div class="lupin-activities">
+            <h2>오늘의 딴짓을 선택해! (클릭하면 횟수 증가)</h2>
+            <ul id="activityList">
+                </ul>
+        </div>
+
+        <div id="result" class="hidden">
+            <p class="total-time">총 <span id="totalTime">0</span>분 동안</p>
+            <p class="total-money"><span id="totalMoney">0</span>원</p>
+            <p class="message">을 꽁으로 벌었습니다! 🎉</p>
+            <p class="sub-message">사장님 몰래 개이득! 🤫</p>
+            
+            <div class="share-section">
+                <button id="shareBtn" onclick="shareLink()">🔗 링크 복사해서 친구한테 자랑하기</button>
+            </div>
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
