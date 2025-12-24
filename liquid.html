@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WG35L7WH');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>액체 재산 계산기 - 내가 마셔서 없앤 벤츠</title>
+    <meta name="description" content="커피, 술, 담배로 소비한 돈을 복리로 계산해드립니다. 당신이 '마셔서 없앤' 벤츠와 아파트를 확인하세요.">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3328426967741967" crossorigin="anonymous"></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <style>
+        :root { --primary: #3c40c6; --bg: #f2f4f6; --text-main: #1e272e; --white: #ffffff; }
+        body { font-family: 'Pretendard', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; color: var(--text-main); }
+        .app-container { background-color: var(--white); max-width: 480px; width: 100%; border-radius: 24px; padding: 30px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        
+        h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; text-align: center; color: #3c40c6; }
+        .subtitle { font-size: 15px; color: #808e9b; text-align: center; margin-bottom: 25px; }
+
+        .tab-menu { display: flex; gap: 8px; margin-bottom: 25px; }
+        .tab-btn { flex: 1; padding: 12px; border: 1px solid #d2dae2; background: #fff; border-radius: 12px; cursor: pointer; font-weight: bold; color: #808e9b; transition: 0.2s; }
+        .tab-btn.active { background: #3c40c6; color: white; border-color: #3c40c6; box-shadow: 0 4px 10px rgba(60, 64, 198, 0.3); }
+
+        .input-group { margin-bottom: 20px; }
+        .label { font-size: 14px; font-weight: 700; margin-bottom: 8px; display: block; color: #485460; }
+        .input-box { width: 100%; padding: 14px; border: 2px solid #f1f2f6; border-radius: 12px; font-size: 16px; outline: none; box-sizing: border-box; transition: 0.2s; }
+        .input-box:focus { border-color: var(--primary); }
+
+        #result-section { display: none; margin-top: 30px; border-top: 2px dashed #d2dae2; padding-top: 25px; text-align: center; animation: popUp 0.5s ease-out; }
+        @keyframes popUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        
+        .result-title { font-size: 16px; color: #808e9b; margin-bottom: 5px; }
+        .big-money { font-size: 36px; font-weight: 900; color: #ff3f34; margin: 10px 0; letter-spacing: -1px; }
+        .compare-box { background: #f1f2f6; border-radius: 16px; padding: 20px; margin: 20px 0; }
+        .compare-text { font-size: 15px; font-weight: 600; line-height: 1.5; }
+        .highlight { color: #3c40c6; font-weight: 800; background: rgba(60, 64, 198, 0.1); padding: 2px 6px; border-radius: 4px; }
+
+        .btn { width: 100%; padding: 16px; border-radius: 14px; border: none; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; display: flex; justify-content: center; align-items: center; text-decoration: none; box-sizing: border-box; }
+        .btn-calc { background: #3c40c6; color: white; font-size: 18px; margin-top: 20px; }
+        .btn-kakao { background: #fee500; color: #3c1e1e; }
+        .btn-coupang { background: #0fbcf9; color: white; }
+        
+        .coupang-notice { font-size: 11px; color: #999; margin-top: 8px; text-align: center; }
+
+        /* 하단 배너 리스트 스타일 */
+        .bottom-nav { margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; }
+        .nav-title { font-size: 14px; color: #888; text-align: center; margin-bottom: 15px; font-weight: bold; }
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .nav-btn { background: #f8f9fa; padding: 15px; border-radius: 16px; font-size: 13px; font-weight: 700; text-align: center; color: #555; text-decoration: none; border: 1px solid #e9ecef; transition: 0.2s; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .nav-btn:hover { background: #fff; border-color: #3c40c6; color: #3c40c6; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .nav-icon { font-size: 24px; margin-bottom: 5px; }
+
+        .seo-accordion { margin-top: 30px; }
+        details { background: #f9fafb; border-radius: 16px; padding: 15px; cursor: pointer; transition: 0.2s; }
+        details[open] { background: #f0f7ff; }
+        summary { font-weight: 700; color: #8b95a1; font-size: 14px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '▼'; font-size: 10px; transition: transform 0.2s; }
+        details[open] summary::after { transform: rotate(180deg); }
+        .seo-content { margin-top: 15px; font-size: 13px; line-height: 1.6; color: #6b7684; word-break: keep-all; }
+    </style>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG35L7WH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="app-container">
+        <h1>💸 액체 재산 계산기</h1>
+        <p class="subtitle">내가 마셔서 없앤 돈, 모았으면 얼마?</p>
+
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="setCategory('coffee')">☕ 커피</button>
+            <button class="tab-btn" onclick="setCategory('alcohol')">🍺 술</button>
+            <button class="tab-btn" onclick="setCategory('smoke')">🚬 담배</button>
+        </div>
+
+        <div class="input-group">
+            <label class="label">일주일에 몇 번 드시나요?</label>
+            <input type="number" id="freq" class="input-box" placeholder="예: 5 (주 5회)">
+        </div>
+        <div class="input-group">
+            <label class="label">한 번에 얼마 쓰시나요?</label>
+            <input type="number" id="cost" class="input-box" placeholder="예: 4500 (아메리카노)">
+        </div>
+        <div class="input-group">
+            <label class="label">몇 년 동안 그러셨나요?</label>
+            <input type="number" id="years" class="input-box" placeholder="예: 10 (년)">
+        </div>
+
+        <button class="btn btn-calc" onclick="calculate()">💰 팩트폭행 당하기 (계산)</button>
+
+        <div id="result-section">
+            <div class="result-title">그냥 모았으면</div>
+            <div style="font-size:20px; font-weight:bold; color:#555;"><span id="simpleTotal">0</span>원</div>
+            
+            <div style="margin: 20px 0; font-size: 24px;">⬇️ 투자를 했다면? ⬇️</div>
+
+            <div class="result-title">S&P500 복리 (연 8%) 적용 시</div>
+            <div class="big-money"><span id="compoundTotal">0</span>원</div>
+            
+            <div class="compare-box">
+                <p class="compare-text">
+                    축하합니다! 당신은 방금<br>
+                    <span id="compareItem" class="highlight">벤츠 E클래스 한 대</span>를<br>
+                    뱃속으로 흘려보냈습니다! 🎉
+                </p>
+            </div>
+
+            <button class="btn btn-kakao" onclick="shareKakao()">📸 친구에게 내 '액체 재산' 자랑하기</button>
+            
+            <a href="https://link.coupang.com/a/dhBXmk" target="_blank" class="btn btn-coupang" id="coupangLink">
+                ☕ 아직도 사 드세요? 한 달이면 머신 값 뽑습니다 (특가)
+            </a>
+            <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br>이에 따른 일정액의 수수료를 제공받습니다.</p>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-title">⚡ 다른 계산기도 해보세요!</div>
+            <div class="nav-grid">
+                <a href="lupin.html" class="nav-btn">
+                    <span class="nav-icon">💩</span>
+                    <span>월급루팡 계산기</span>
+                </a>
+                <a href="value.html" class="nav-btn">
+                    <span class="nav-icon">🍚</span>
+                    <span>국밥 가성비 계산기</span>
+                </a>
+                <a href="anger.html" class="nav-btn">
+                    <span class="nav-icon">🤬</span>
+                    <span>홧병 적금 계산기</span>
+                </a>
+                <a href="index.html" class="nav-btn" style="background:#3c40c6; color:white; border-color:#3c40c6;">
+                    <span class="nav-icon">🏠</span>
+                    <span>전체 홈으로</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="seo-accordion">
+            <details>
+                <summary>📈 왜 액수가 이렇게 크죠? (계산 로직)</summary>
+                <div class="seo-content">
+                    이 계산기는 단순 합산뿐만 아니라 <strong>'기회비용(Opportunity Cost)'</strong>을 계산합니다.<br><br>
+                    <strong>1. 단순 비용:</strong> 횟수 × 가격 × 기간<br>
+                    <strong>2. 복리 수익(Compound Interest):</strong> 당신이 그 돈을 쓰지 않고 매달 <strong>연 8% 수익률</strong>(미국 S&P500 평균)로 투자했을 때 불어나는 자산을 계산했습니다.<br><br>
+                    "커피 한 잔 값"은 작아 보이지만, 복리의 마법이 더해지면 10년, 20년 뒤에는 집 한 채 값이 될 수도 있습니다. 이것을 <strong>'스노우볼 효과'</strong>라고 합니다.
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <script>
+        let category = 'coffee';
+        const TARGET_LINK = "https://link.coupang.com/a/dhBXmk"; // 사장님 링크
+
+        function setCategory(cat) {
+            category = cat;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // 플레이스홀더 및 버튼 멘트 변경 (강력한 후킹)
+            const coupangBtn = document.getElementById('coupangLink');
+            
+            // 링크 설정
+            coupangBtn.href = TARGET_LINK;
+
+            if(cat === 'coffee') {
+                document.getElementById('freq').placeholder = "예: 5 (주 5회)";
+                document.getElementById('cost').placeholder = "예: 4500 (아메리카노)";
+                coupangBtn.innerHTML = "☕ 아직도 사 드세요? 한 달이면 머신 값 뽑습니다 (특가)";
+            } else if(cat === 'alcohol') {
+                document.getElementById('freq').placeholder = "예: 2 (주 2회 음주)";
+                document.getElementById('cost').placeholder = "예: 50000 (1차+2차)";
+                coupangBtn.innerHTML = "💸 술값으로 벤츠 날렸으면, 이거라도 챙겨야지 (클릭)";
+            } else {
+                document.getElementById('freq').placeholder = "예: 5 (주 5갑)";
+                document.getElementById('cost').placeholder = "예: 4500 (담배값)";
+                coupangBtn.innerHTML = "💊 폐 그만 태우고, 내 몸에 사죄하기 (영양제)";
+            }
+        }
+
+        function calculate() {
+            const freq = parseFloat(document.getElementById('freq').value);
+            const cost = parseFloat(document.getElementById('cost').value);
+            const years = parseFloat(document.getElementById('years').value);
+
+            if (!freq || !cost || !years) {
+                alert("빈칸을 모두 채워주세요! 두려워하지 마세요!");
+                return;
+            }
+
+            const weeks = years * 52;
+            const simpleSum = freq * cost * weeks;
+            const monthlyInvest = (freq * cost * 52) / 12;
+            const rate = 0.08 / 12; 
+            const months = years * 12;
+            const compoundSum = monthlyInvest * ( (Math.pow(1 + rate, months) - 1) / rate );
+
+            document.getElementById('simpleTotal').innerText = Math.floor(simpleSum).toLocaleString();
+            document.getElementById('compoundTotal').innerText = Math.floor(compoundSum).toLocaleString();
+
+            let itemText = "";
+            const money = compoundSum;
+            
+            // 벤츠 E클래스 구간을 현실적으로 매칭
+            if (money < 1000000) itemText = "최신형 에어팟 프로 🎧";
+            else if (money < 3000000) itemText = "최고급 게이밍 PC 💻";
+            else if (money < 10000000) itemText = "샤넬 명품 백 👜";
+            else if (money < 30000000) itemText = "현대 아반떼 신차 🚗";
+            else if (money < 50000000) itemText = "그랜저 풀옵션 🏎️";
+            else if (money < 100000000) itemText = "벤츠 E클래스 🚗";
+            else if (money < 200000000) itemText = "포르쉐 박스터 🔥";
+            else if (money < 500000000) itemText = "수도권 아파트 전세 🏠";
+            else itemText = "강남 아파트 한 채 🏢";
+
+            document.getElementById('compareItem').innerText = itemText;
+            document.getElementById('result-section').style.display = 'block';
+        }
+
+        function shareKakao() {
+            navigator.clipboard.writeText(window.location.href).then(() => alert("링크 복사 완료!\n친구한테 '야 너 입으로 벤츠 한 대 날림ㅋㅋ' 라고 보내보세요.")).catch(() => alert("복사 실패"));
+        }
+    </script>
+</body>
+</html>
