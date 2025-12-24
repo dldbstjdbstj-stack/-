@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WG35L7WH');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>기적의 국밥 계산기 - 가성비 판독기</title>
+    <meta name="description" content="이 돈이면 국밥이 몇 그릇? 당신의 소비를 국밥, 치킨, 주식으로 환산해드립니다.">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3328426967741967" crossorigin="anonymous"></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <style>
+        :root { --primary: #27ae60; --bg: #fdfdfd; --text-main: #191f28; --text-sub: #8b95a1; --white: #ffffff; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #f2f4f6; margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; color: var(--text-main); }
+        .app-container { background-color: var(--white); max-width: 480px; width: 100%; border-radius: 24px; padding: 30px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; text-align: center; color: #333; }
+        .subtitle { font-size: 15px; color: var(--text-sub); text-align: center; margin-bottom: 30px; }
+        
+        .input-area { margin-bottom: 20px; text-align: center; }
+        .input-wrapper { display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2px solid #e5e8eb; padding-bottom: 10px; transition: 0.2s; }
+        .input-wrapper:focus-within { border-bottom-color: var(--primary); }
+        input[type="number"] { border: none; font-size: 32px; font-weight: 800; width: 200px; text-align: right; outline: none; background: transparent; color: #333; }
+        
+        .result-grid { display: grid; grid-template-columns: 1fr; gap: 15px; display: none; animation: slideUp 0.4s ease-out; margin-top: 30px; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .item-card { background: #fff; border: 1px solid #eee; border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .item-info { display: flex; align-items: center; gap: 15px; }
+        .item-icon { font-size: 40px; }
+        .item-name { font-size: 14px; color: #666; font-weight: bold; margin-bottom: 4px; }
+        .item-count { font-size: 22px; font-weight: 900; color: #333; }
+        .highlight { color: var(--primary); }
+        
+        .btn { width: 100%; padding: 16px; border-radius: 14px; border: none; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; display: flex; justify-content: center; align-items: center; text-decoration: none; box-sizing: border-box; }
+        .btn-calc { background-color: #27ae60; color: white; font-size: 18px; margin-top: 10px; }
+        .btn-kakao { background-color: #fee500; color: #3c1e1e; }
+        .btn-coupang { background-color: #e67e22; color: white; }
+        .coupang-notice { font-size: 11px; color: #999; margin-top: 8px; text-align: center; }
+
+        .bottom-nav { margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; }
+        .nav-title { font-size: 14px; color: #888; text-align: center; margin-bottom: 15px; font-weight: bold; }
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .nav-btn { background: #f8f9fa; padding: 15px; border-radius: 16px; font-size: 13px; font-weight: 700; text-align: center; color: #555; text-decoration: none; border: 1px solid #e9ecef; transition: 0.2s; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .nav-btn:hover { background: #fff; border-color: #27ae60; color: #27ae60; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .nav-icon { font-size: 24px; margin-bottom: 5px; }
+
+        .seo-accordion { margin-top: 30px; }
+        details { background: #f9fafb; border-radius: 16px; padding: 15px; cursor: pointer; transition: 0.2s; }
+        details[open] { background: #f0f7ff; }
+        summary { font-weight: 700; color: #8b95a1; font-size: 14px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '▼'; font-size: 10px; transition: transform 0.2s; }
+        details[open] summary::after { transform: rotate(180deg); }
+        .seo-content { margin-top: 15px; font-size: 13px; line-height: 1.6; color: #6b7684; word-break: keep-all; }
+    </style>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG35L7WH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="app-container">
+        <h1>🍚 기적의 국밥 계산기</h1>
+        <p class="subtitle">그거 살 돈이면 국밥이 몇 그릇이야?</p>
+
+        <div class="input-area">
+            <div class="input-wrapper">
+                <input type="number" id="moneyInput" placeholder="금액 입력">
+                <span style="font-size: 20px; font-weight: 600; color: #333;">원</span>
+            </div>
+            <p style="font-size: 12px; color: #999; margin-top: 8px;">지출 예정 금액을 입력하세요</p>
+        </div>
+
+        <button class="btn btn-calc" onclick="calculate()">🥣 가성비 판독하기 (계산)</button>
+
+        <div id="resultGrid" class="result-grid">
+            <div class="item-card">
+                <div class="item-info">
+                    <span class="item-icon">🍚</span>
+                    <div>
+                        <div class="item-name">뜨끈한 국밥 (9,000원)</div>
+                        <div class="item-count"><span id="gukbapCount" class="highlight">0</span> 그릇</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-info">
+                    <span class="item-icon">🍗</span>
+                    <div>
+                        <div class="item-name">황금 올리브 (23,000원)</div>
+                        <div class="item-count"><span id="chickenCount" class="highlight">0</span> 마리</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-info">
+                    <span class="item-icon">☕</span>
+                    <div>
+                        <div class="item-name">스타벅스 아메 (4,500원)</div>
+                        <div class="item-count"><span id="coffeeCount" class="highlight">0</span> 잔</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-info">
+                    <span class="item-icon">📉</span>
+                    <div>
+                        <div class="item-name">삼성전자 (56,000원)</div>
+                        <div class="item-count"><span id="stockCount" class="highlight">0</span> 주</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-kakao" onclick="shareKakao()">📸 친구에게 가성비 자랑하기</button>
+            <a href="https://link.coupang.com/a/dhBXmk" target="_blank" class="btn btn-coupang">🍚 집에서 먹는 국밥 특가보기</a>
+            <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br>이에 따른 일정액의 수수료를 제공받습니다.</p>
+        </div>
+        
+        <div class="bottom-nav">
+            <div class="nav-title">⚡ 다른 계산기도 해보세요!</div>
+            <div class="nav-grid">
+                <a href="lupin.html" class="nav-btn">
+                    <span class="nav-icon">💩</span>
+                    <span>월급루팡 계산기</span>
+                </a>
+                <a href="liquid.html" class="nav-btn">
+                    <span class="nav-icon">💸</span>
+                    <span>액체 재산 계산기</span>
+                </a>
+                <a href="parents.html" class="nav-btn">
+                    <span class="nav-icon">👵</span>
+                    <span>등골 브레이커</span>
+                </a>
+                <a href="index.html" class="nav-btn" style="background:#27ae60; color:white; border-color:#27ae60;">
+                    <span class="nav-icon">🏠</span>
+                    <span>전체 홈으로</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="seo-accordion">
+            <details>
+                <summary>📊 계산기 로직 및 물가 지수 기준 (SEO)</summary>
+                <div class="seo-content">
+                    본 가성비 판독기는 2025년 평균 물가를 기준으로 합니다.<br>
+                    국밥(9,000원), 치킨(23,000원), 커피(4,500원), 삼성전자(56,000원)
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <script>
+        const PRICES = { gukbap: 9000, chicken: 23000, coffee: 4500, stock: 56000 };
+        function calculate() {
+            const money = parseInt(document.getElementById('moneyInput').value);
+            if (!money || money <= 0) { alert("금액을 입력해주세요!"); return; }
+            document.getElementById('gukbapCount').innerText = (money / PRICES.gukbap).toFixed(1);
+            document.getElementById('chickenCount').innerText = (money / PRICES.chicken).toFixed(1);
+            document.getElementById('coffeeCount').innerText = (money / PRICES.coffee).toFixed(1);
+            document.getElementById('stockCount').innerText = (money / PRICES.stock).toFixed(2);
+            document.getElementById('resultGrid').style.display = 'grid';
+        }
+        function shareKakao() { navigator.clipboard.writeText(window.location.href).then(() => alert("링크 복사 완료!")).catch(() => alert("복사 실패")); }
+    </script>
+</body>
+</html>
