@@ -6,13 +6,13 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WG35L7WH');</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>월급루팡 계산기 Pro - 내가 싼 똥, 회사가 산다!</title>
     <meta name="description" content="회사에서 화장실 가고 멍때리는 시간도 돈이 됩니다. 직장인, 알바생을 위한 힐링 시급 계산기.">
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3328426967741967" crossorigin="anonymous"></script>
-    
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     
     <style>
@@ -45,13 +45,17 @@
         .btn { width: 100%; padding: 16px; border-radius: 14px; border: none; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; display: flex; justify-content: center; align-items: center; text-decoration: none; box-sizing: border-box; }
         .btn-kakao { background-color: #fee500; color: #3c1e1e; }
         .btn-coupang { background-color: #3182f6; color: white; }
-        .btn-home { background-color: #fff; border: 1px solid #ddd; color: #333; margin-top: 20px; }
-        
-        /* 쿠팡 파트너스 고지 문구 스타일 */
         .coupang-notice { font-size: 11px; color: #999; margin-top: 8px; line-height: 1.4; word-break: keep-all; }
 
-        /* SEO 드롭박스 */
-        .seo-accordion { margin-top: 40px; border-top: 1px solid #e5e8eb; padding-top: 20px; }
+        /* 하단 배너 스타일 추가 */
+        .bottom-nav { margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; }
+        .nav-title { font-size: 14px; color: #888; text-align: center; margin-bottom: 15px; font-weight: bold; }
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .nav-btn { background: #f8f9fa; padding: 15px; border-radius: 16px; font-size: 13px; font-weight: 700; text-align: center; color: #555; text-decoration: none; border: 1px solid #e9ecef; transition: 0.2s; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .nav-btn:hover { background: #fff; border-color: #3182f6; color: #3182f6; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .nav-icon { font-size: 24px; margin-bottom: 5px; }
+
+        .seo-accordion { margin-top: 30px; }
         details { background: #f9fafb; border-radius: 16px; padding: 15px; cursor: pointer; transition: 0.2s; }
         details[open] { background: #f0f7ff; }
         summary { font-weight: 700; color: #8b95a1; font-size: 14px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
@@ -64,6 +68,7 @@
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG35L7WH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <div class="app-container">
         <h1>💩 월급루팡 계산기</h1>
         <p class="subtitle">티끌 모아 태산, 똥 모아 치킨</p>
@@ -90,6 +95,28 @@
             <a href="https://link.coupang.com/a/dhjpMB" target="_blank" class="btn btn-coupang">🛍️ 훔친 월급 세탁하기</a>
             <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br>이에 따른 일정액의 수수료를 제공받습니다.</p>
         </div>
+
+        <div class="bottom-nav">
+            <div class="nav-title">⚡ 다른 계산기도 해보세요!</div>
+            <div class="nav-grid">
+                <a href="liquid.html" class="nav-btn">
+                    <span class="nav-icon">💸</span>
+                    <span>액체 재산 계산기</span>
+                </a>
+                <a href="value.html" class="nav-btn">
+                    <span class="nav-icon">🍚</span>
+                    <span>국밥 가성비 계산기</span>
+                </a>
+                <a href="anger.html" class="nav-btn">
+                    <span class="nav-icon">🤬</span>
+                    <span>홧병 적금 계산기</span>
+                </a>
+                <a href="index.html" class="nav-btn" style="background:#3182f6; color:white; border-color:#3182f6;">
+                    <span class="nav-icon">🏠</span>
+                    <span>전체 홈으로</span>
+                </a>
+            </div>
+        </div>
         
         <div class="seo-accordion">
             <details>
@@ -102,8 +129,6 @@
                 </div>
             </details>
         </div>
-
-        <a href="index.html" class="btn btn-home">🏠 다른 계산기 더보기 (홈으로)</a>
     </div>
 
     <script>
