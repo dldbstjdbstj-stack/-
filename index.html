@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WG35L7WH');</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CalcHub - 당신을 위한 모든 계산기</title>
-    <meta name="description" content="월급루팡 계산기부터 금융, 건강 계산기까지. CalcHub에서 필요한 모든 도구를 만나보세요.">
+    <meta name="description" content="월급루팡, 술값 재산 환산, 국밥 가성비, 홧병 적금 등. 재미로 보는 당신의 자산과 멘탈 계산기 모음.">
+    
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
-        :root { --bg: #f6f8fa; --card-bg: #fff; --text-main: #191f28; --text-sub: #8b95a1; --accent: #3182f6; --shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        :root { --bg: #f6f8fa; --card-bg: #fff; --text-main: #191f28; --text-sub: #8b95a1; --accent: #3182f6; }
         body { font-family: 'Pretendard', sans-serif; background-color: var(--bg); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         .hub-container { max-width: 600px; width: 100%; }
+        
         header { text-align: left; margin-bottom: 30px; padding: 0 10px; }
         .brand { font-size: 14px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; display: block; }
         h1 { font-size: 32px; font-weight: 800; margin: 0; line-height: 1.3; }
         .desc { color: var(--text-sub); margin-top: 10px; font-size: 16px; }
+        
+        /* 그리드 레이아웃 */
         .grid-layout { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .card { background: var(--card-bg); border-radius: 24px; padding: 24px; text-decoration: none; color: var(--text-main); transition: all 0.3s; box-shadow: var(--shadow); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; min-height: 140px; }
+        
+        /* 카드 스타일 */
+        .card { background: var(--card-bg); border-radius: 24px; padding: 24px; text-decoration: none; color: var(--text-main); transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; min-height: 140px; border: 1px solid transparent; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        
+        /* 메인 카드 (월급루팡) */
         .card.main { grid-column: span 2; background: linear-gradient(135deg, #3182f6, #0055ff); color: white; min-height: 160px; }
         .card.main .card-title { color: white; }
         .card.main .card-desc { color: rgba(255,255,255,0.8); }
         .card.main .icon { font-size: 48px; position: absolute; right: 20px; bottom: 20px; opacity: 0.9; }
+
+        /* 서브 카드들 */
         .icon { font-size: 32px; margin-bottom: 12px; }
         .card-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-        .card-desc { font-size: 13px; color: var(--text-sub); line-height: 1.4; }
+        .card-desc { font-size: 13px; color: var(--text-sub); line-height: 1.4; word-break: keep-all; }
+        
+        /* 커밍순 카드 */
         .card.disabled { background-color: #f0f2f5; cursor: default; opacity: 0.7; }
-        .card.disabled:hover { transform: none; box-shadow: none; }
+        .card.disabled:hover { transform: none; }
         .tag-soon { display: inline-block; background: #e5e8eb; color: #8b95a1; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 6px; margin-bottom: 10px; }
         
-        /* SEO 드롭박스 스타일 */
+        /* SEO 드롭박스 */
         .seo-accordion { margin-top: 40px; border-top: 1px solid #e5e8eb; padding-top: 20px; }
         details { background: #fff; border-radius: 16px; padding: 15px; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
         details[open] { background: #f9fafb; }
@@ -36,17 +54,18 @@
         summary::after { content: '▼'; font-size: 10px; transition: transform 0.2s; }
         details[open] summary::after { transform: rotate(180deg); }
         .seo-content { margin-top: 15px; font-size: 13px; line-height: 1.6; color: #6b7684; word-break: keep-all; }
-        .seo-content strong { color: #333; }
-
-        footer { margin-top: 30px; text-align: center; font-size: 12px; color: #cbd0d6; }
+        
+        footer { margin-top: 40px; text-align: center; font-size: 12px; color: #cbd0d6; }
     </style>
 </head>
 <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG35L7WH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <div class="hub-container">
         <header>
             <span class="brand">CalcHub</span>
             <h1>일상의 모든 계산<br>여기서 해결하세요.</h1>
-            <p class="desc">복잡한 숫자는 저희가 계산할게요.<br>당신은 결과만 확인하세요.</p>
+            <p class="desc">복잡한 숫자는 저희가 계산할게요.<br>당신은 팩폭만 확인하세요.</p>
         </header>
 
         <div class="grid-layout">
@@ -58,39 +77,46 @@
                 <span class="icon">💸</span>
             </a>
 
+            <a href="liquid.html" class="card" style="background: #eef2ff; border: 1px solid #c7d2fe;">
+                <div class="icon">🥂</div>
+                <div class="card-title" style="color:#3c40c6;">액체 재산 계산기</div>
+                <div class="card-desc">술값, 커피값 아꼈으면 얼마?<br>당신이 마셔서 없앤 벤츠값</div>
+            </a>
+
+            <a href="value.html" class="card" style="background: #eafaf1; border: 1px solid #d5f5e3;">
+                <div class="icon">🍚</div>
+                <div class="card-title" style="color:#27ae60;">국밥 가성비 계산기</div>
+                <div class="card-desc">그거 살 돈이면 국밥이 몇 그릇?<br>쇼핑 전 필수 코스</div>
+            </a>
+
+            <a href="anger.html" class="card" style="background: #fff0f1; border: 1px solid #ffcccc;">
+                <div class="icon">🤬</div>
+                <div class="card-title" style="color:#ff4757;">홧병 적금 계산기</div>
+                <div class="card-desc">욕 한 번에 500원?<br>스트레스를 돈으로 환산!</div>
+            </a>
+
             <div class="card disabled">
-                <span class="tag-soon">준비중</span>
-                <div class="icon">💰</div>
-                <div class="card-title">연봉 실수령액</div>
-                <div class="card-desc">세금 떼고 실제로<br>얼마 받는지 확인</div>
+                <span class="tag-soon">Coming Soon</span>
+                <div class="icon">🏖️</div>
+                <div class="card-title">퇴직금 계산기</div>
+                <div class="card-desc">존버는 승리한다<br>나갈 때 얼마 받을까?</div>
             </div>
+
             <div class="card disabled">
-                <span class="tag-soon">준비중</span>
+                <span class="tag-soon">Coming Soon</span>
                 <div class="icon">🏥</div>
                 <div class="card-title">BMI 비만도</div>
                 <div class="card-desc">내 키와 체중으로<br>건강 상태 체크</div>
-            </div>
-            <div class="card disabled">
-                <span class="tag-soon">준비중</span>
-                <div class="icon">➗</div>
-                <div class="card-title">퍼센트 계산</div>
-                <div class="card-desc">할인율, 수익률<br>3초 만에 계산</div>
-            </div>
-            <div class="card disabled">
-                <span class="tag-soon">준비중</span>
-                <div class="icon">🏖️</div>
-                <div class="card-title">퇴직금 계산</div>
-                <div class="card-desc">열심히 일한 당신<br>얼마 받을 수 있을까?</div>
             </div>
         </div>
 
         <div class="seo-accordion">
             <details>
-                <summary>🧐 CalcHub 사용설명서 (SEO TMI)</summary>
+                <summary>🧐 CalcHub 사용설명서 (서비스 소개)</summary>
                 <div class="seo-content">
-                    <strong>CalcHub(캘크허브)</strong>는 대한민국의 모든 직장인, 알바생, 학생들을 위한 <strong>무료 온라인 계산기 모음 플랫폼</strong>입니다. <br><br>
-                    단순한 공학용 계산기가 아닙니다. <strong>'월급루팡 계산기'</strong>처럼 일상 속 소소한 재미를 주는 힐링 도구부터, 2025년 최신 세율이 적용된 <strong>연봉 실수령액 계산기</strong>, 다이어터를 위한 <strong>BMI 비만도 계산기</strong>, 주식 투자자를 위한 <strong>수익률 퍼센트 계산기</strong>까지!<br><br>
-                    복잡한 엑셀 수식이나 어플 설치 없이, 웹에서 바로 접속해서 3초 만에 결과를 확인하세요. 여러분의 스마트한 생활을 CalcHub가 응원합니다.
+                    <strong>CalcHub(캘크허브)</strong>는 대한민국의 모든 직장인, 알바생, 학생들을 위한 <strong>무료 온라인 팩트폭행 계산기 플랫폼</strong>입니다. <br><br>
+                    단순한 공학용 계산기가 아닙니다. <strong>'월급루팡 계산기'</strong>처럼 업무 시간의 가치를 돈으로 환산해주거나, 매일 마시는 <strong>커피와 술값을 복리로 계산해(액체 재산 계산기)</strong> 경각심을 주는 등 일상 속 재미와 정보를 동시에 제공합니다.<br><br>
+                    복잡한 엑셀 수식이나 어플 설치 없이, 웹에서 바로 접속해서 3초 만에 결과를 확인하고 친구들에게 공유해보세요.
                 </div>
             </details>
         </div>
