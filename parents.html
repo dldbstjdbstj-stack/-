@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WG35L7WH');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>등골 브레이커 계산기 - 엄마 미안해</title>
+    <meta name="description" content="내가 쓴 학원비와 용돈을 계산해보세요. 부모님의 노후 자금과 맞바꾼 금액을 알려드립니다.">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3328426967741967" crossorigin="anonymous"></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <style>
+        :root { --primary: #e17055; --bg: #fdf6f0; --text-main: #2d3436; --white: #ffffff; }
+        body { font-family: 'Pretendard', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; color: var(--text-main); }
+        .app-container { background-color: var(--white); max-width: 480px; width: 100%; border-radius: 24px; padding: 30px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        
+        h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; text-align: center; color: #e17055; }
+        .subtitle { font-size: 15px; color: #636e72; text-align: center; margin-bottom: 25px; }
+
+        .input-group { margin-bottom: 20px; }
+        .label { font-size: 14px; font-weight: 700; margin-bottom: 8px; display: block; color: #636e72; }
+        .input-box { width: 100%; padding: 14px; border: 2px solid #fab1a0; border-radius: 12px; font-size: 16px; outline: none; box-sizing: border-box; }
+        
+        .btn { width: 100%; padding: 16px; border-radius: 14px; border: none; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; display: flex; justify-content: center; align-items: center; text-decoration: none; box-sizing: border-box; }
+        .btn-calc { background: #e17055; color: white; font-size: 18px; margin-top: 20px; }
+        .btn-kakao { background: #fee500; color: #3c1e1e; }
+        .btn-coupang { background: #d63031; color: white; }
+        .coupang-notice { font-size: 11px; color: #999; margin-top: 8px; text-align: center; }
+
+        #result-section { display: none; margin-top: 30px; border-top: 2px dashed #fab1a0; padding-top: 25px; text-align: center; animation: popUp 0.5s ease-out; }
+        @keyframes popUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        
+        .result-title { font-size: 16px; color: #636e72; margin-bottom: 5px; }
+        .big-money { font-size: 32px; font-weight: 900; color: #d63031; margin: 10px 0; letter-spacing: -1px; }
+        .compare-box { background: #ffeaa7; border-radius: 16px; padding: 20px; margin: 20px 0; color: #2d3436; }
+        .highlight { font-weight: 800; color: #d63031; font-size: 18px; }
+
+        .bottom-nav { margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; }
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .nav-btn { background: #fff0e6; padding: 15px; border-radius: 16px; font-size: 13px; font-weight: 700; text-align: center; color: #555; text-decoration: none; border: 1px solid #fecdcd; transition: 0.2s; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .nav-icon { font-size: 24px; margin-bottom: 5px; }
+        
+        .seo-accordion { margin-top: 30px; }
+        details { background: #f9fafb; border-radius: 16px; padding: 15px; }
+        summary { font-weight: 700; color: #8b95a1; font-size: 14px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .seo-content { margin-top: 10px; font-size: 13px; line-height: 1.6; color: #666; }
+    </style>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG35L7WH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="app-container">
+        <h1>👵 등골 브레이커 계산기</h1>
+        <p class="subtitle">내가 쓴 돈, 부모님에겐 무엇이었을까?</p>
+
+        <div class="input-group">
+            <label class="label">학창시절, 학원 몇 개 다녔나요?</label>
+            <input type="number" id="academy" class="input-box" placeholder="예: 3 (국영수)">
+        </div>
+        <div class="input-group">
+            <label class="label">대학 등록금은 얼마였나요? (학기당)</label>
+            <input type="number" id="tuition" class="input-box" placeholder="예: 400 (만원)">
+        </div>
+        <div class="input-group">
+            <label class="label">독립 전까지 용돈 얼마나 받았나요? (월)</label>
+            <input type="number" id="allowance" class="input-box" placeholder="예: 30 (만원)">
+        </div>
+
+        <button class="btn btn-calc" onclick="calculate()">😭 불효 비용 확인하기 (클릭)</button>
+
+        <div id="result-section">
+            <div class="result-title">당신이 부모님께 청구한 금액</div>
+            <div class="big-money"><span id="totalMoney">0</span>원</div>
+            
+            <div class="compare-box">
+                이 돈이면 부모님은...<br><br>
+                <span id="compareItem" class="highlight">벤츠 E클래스 풀옵션</span>을<br>
+                현금 박치기로 살 수 있었습니다.
+            </div>
+
+            <button class="btn btn-kakao" onclick="shareKakao()">📸 친구들과 불효 배틀하기</button>
+            
+            <a href="https://link.coupang.com/a/dhBXmk" target="_blank" class="btn btn-coupang">🎁 불효자는 웁니다... 효도 선물 사드리기</a>
+            <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br>이에 따른 일정액의 수수료를 제공받습니다.</p>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-grid">
+                <a href="lupin.html" class="nav-btn"><span class="nav-icon">💩</span>월급루팡</a>
+                <a href="liquid.html" class="nav-btn"><span class="nav-icon">💸</span>액체재산</a>
+                <a href="value.html" class="nav-btn"><span class="nav-icon">🍚</span>국밥계산</a>
+                <a href="index.html" class="nav-btn" style="background:#e17055; color:white;"><span class="nav-icon">🏠</span>홈으로</a>
+            </div>
+        </div>
+        
+        <div class="seo-accordion">
+            <details>
+                <summary>💡 계산 기준 (10년 기준)</summary>
+                <div class="seo-content">
+                    학원비는 초중고 12년 평균값, 대학 등록금은 4년(8학기), 용돈은 20세까지 수령한 금액을 기준으로 단순 합산 및 물가 상승률을 일부 반영했습니다.
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const academy = parseFloat(document.getElementById('academy').value) || 0;
+            const tuition = parseFloat(document.getElementById('tuition').value) || 0;
+            const allowance = parseFloat(document.getElementById('allowance').value) || 0;
+
+            if (academy === 0 && tuition === 0 && allowance === 0) {
+                alert("하나라도 입력해주세요... 너무 효자이신가요?");
+                return;
+            }
+
+            // 계산 로직 (단위: 만원)
+            // 학원비: 개수 * 30만원 * 12개월 * 12년 (초중고)
+            const academyCost = academy * 30 * 12 * 12;
+            // 등록금: 학기당 * 8학기
+            const tuitionCost = tuition * 8;
+            // 용돈: 월 * 12개월 * 20년
+            const allowanceCost = allowance * 12 * 20;
+
+            const total = (academyCost + tuitionCost + allowanceCost) * 10000; // 원 단위 변환
+
+            document.getElementById('totalMoney').innerText = total.toLocaleString();
+
+            let item = "";
+            if (total < 30000000) item = "유럽 여행 10번";
+            else if (total < 70000000) item = "제네시스 GV80 신차";
+            else if (total < 150000000) item = "포르쉐 파나메라";
+            else if (total < 300000000) item = "지방 아파트 한 채";
+            else if (total < 600000000) item = "페라리 2대";
+            else item = "서울 강남 빌딩 화장실 1칸";
+
+            document.getElementById('compareItem').innerText = item;
+            document.getElementById('result-section').style.display = 'block';
+        }
+        function shareKakao() {
+            navigator.clipboard.writeText(window.location.href).then(() => alert("링크 복사 완료!")).catch(() => alert("복사 실패"));
+        }
+    </script>
+</body>
+</html>
