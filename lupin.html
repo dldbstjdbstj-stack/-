@@ -21,13 +21,20 @@
         .app-container { background-color: var(--white); max-width: 480px; width: 100%; border-radius: 24px; padding: 30px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px 0; text-align: center; }
         .subtitle { font-size: 15px; color: var(--text-sub); text-align: center; margin-bottom: 30px; }
+        
+        /* 탭 스위치 */
         .tab-switch { display: flex; background-color: #f2f4f6; padding: 4px; border-radius: 12px; margin-bottom: 25px; }
         .tab-btn { flex: 1; border: none; background: none; padding: 10px; font-size: 14px; font-weight: 600; color: var(--text-sub); cursor: pointer; border-radius: 10px; transition: all 0.2s; }
         .tab-btn.active { background-color: var(--white); color: var(--text-main); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        
+        /* 입력창 */
         .input-area { margin-bottom: 30px; text-align: center; }
         .input-wrapper { display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2px solid var(--bg); padding-bottom: 10px; }
         input[type="number"] { border: none; font-size: 32px; font-weight: 800; width: 180px; text-align: right; outline: none; background: transparent; }
+        
         .section-title { font-size: 16px; font-weight: 700; color: var(--text-sub); margin-bottom: 15px; }
+        
+        /* 그리드 리스트 */
         .grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
         .card-btn { background-color: var(--white); border: 1px solid #e5e8eb; border-radius: 16px; padding: 16px; cursor: pointer; position: relative; transition: all 0.2s; }
         .card-btn:active { transform: scale(0.96); background-color: #f9fafb; }
@@ -38,13 +45,18 @@
         .badge { position: absolute; top: 12px; right: 12px; background-color: #ff5252; color: white; font-size: 11px; padding: 2px 6px; border-radius: 99px; font-weight: 800; opacity: 0; transform: scale(0.5); transition: all 0.2s; }
         .badge.show { opacity: 1; transform: scale(1); }
         
-        #result-box { background-color: #f2f4f6; border-radius: 20px; padding: 24px; text-align: center; margin-top: 20px; display: none; animation: slideUp 0.3s ease-out; }
+        /* 결과창 */
+        #result-box { background-color: #f2f4f6; border-radius: 20px; padding: 24px; text-align: center; margin-top: 30px; display: none; animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .result-money { font-size: 36px; font-weight: 900; color: var(--primary); margin: 5px 0; }
         
+        /* 버튼들 */
         .btn { width: 100%; padding: 16px; border-radius: 14px; border: none; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; display: flex; justify-content: center; align-items: center; text-decoration: none; box-sizing: border-box; }
+        .btn-calc { background-color: #191f28; color: white; font-size: 18px; margin-bottom: 20px; }
         .btn-kakao { background-color: #fee500; color: #3c1e1e; }
         .btn-coupang { background-color: #3182f6; color: white; }
+        .btn-home { background-color: #fff; border: 1px solid #ddd; color: #333; margin-top: 20px; }
+
         .coupang-notice { font-size: 11px; color: #999; margin-top: 8px; line-height: 1.4; word-break: keep-all; }
 
         /* 하단 배너 스타일 */
@@ -66,7 +78,8 @@
     </style>
 </head>
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG35L7WH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG35L7WH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="app-container">
         <h1>💩 월급루팡 계산기</h1>
@@ -77,13 +90,17 @@
         </div>
         <div class="input-area">
             <div class="input-wrapper">
-                <input type="number" id="moneyInput" placeholder="300" oninput="calculate()">
+                <input type="number" id="moneyInput" placeholder="0" >
                 <span id="unitText" style="font-size: 20px; font-weight: 600;">만원</span>
             </div>
+            <p style="font-size:12px; color:#8b95a1; margin-top:8px;">세전 금액을 입력하세요</p>
         </div>
-        <div class="section-title">오늘의 루팡 항목 👇</div>
+        
+        <div class="section-title">오늘의 루팡 항목 (터치하세요) 👇</div>
         <div class="grid-list" id="gridList"></div>
         
+        <button class="btn btn-calc" onclick="calculate()">💰 루팡 금액 계산하기</button>
+
         <div id="result-box">
             <div>총 <span id="resTime">0</span>분 놀아서</div>
             <div class="result-money"><span id="resMoney">0</span>원</div>
@@ -94,7 +111,7 @@
             <a href="https://link.coupang.com/a/dhBXmk" target="_blank" class="btn btn-coupang">🛍️ 사장님 몰래 번 돈, 여기서 세탁하세요 (특가)</a>
             <p class="coupang-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br>이에 따른 일정액의 수수료를 제공받습니다.</p>
         </div>
-        
+
         <div class="bottom-nav">
             <div class="nav-title">⚡ 다른 계산기도 해보세요!</div>
             <div class="nav-grid">
@@ -116,6 +133,8 @@
                 </a>
             </div>
         </div>
+        
+        <a href="index.html" class="btn btn-home">🏠 홈으로 돌아가기</a>
 
         <div class="seo-accordion">
             <details>
@@ -159,23 +178,34 @@
             const btns = document.querySelectorAll('.tab-btn');
             const input = document.getElementById('moneyInput');
             const unit = document.getElementById('unitText');
-            if (mode === 'salary') { btns[0].classList.add('active'); btns[1].classList.remove('active'); input.placeholder = "300"; unit.innerText = "만원"; } 
-            else { btns[0].classList.remove('active'); btns[1].classList.add('active'); input.placeholder = "9860"; unit.innerText = "원"; }
-            calculate();
+            // 모드 변경 시 placeholder만 변경 (값은 비움)
+            if (mode === 'salary') { btns[0].classList.add('active'); btns[1].classList.remove('active'); input.placeholder = "0"; unit.innerText = "만원"; } 
+            else { btns[0].classList.remove('active'); btns[1].classList.add('active'); input.placeholder = "0"; unit.innerText = "원"; }
+            
+            // 모드 바뀌면 결과창 숨김
+            document.getElementById('result-box').style.display = 'none';
         }
         function addCount(id, element) {
             counts[id]++;
             const badge = document.getElementById(`badge-${id}`); badge.innerText = `x${counts[id]}`; badge.classList.add('show');
-            element.classList.add('clicked'); setTimeout(() => element.classList.remove('clicked'), 100); calculate();
+            element.classList.add('clicked'); setTimeout(() => element.classList.remove('clicked'), 100); 
+            // 여기서는 계산하지 않음 (버튼 눌러야 계산)
         }
         function calculate() {
-            const moneyVal = parseInt(document.getElementById('moneyInput').value); if (!moneyVal) return;
+            const moneyVal = parseInt(document.getElementById('moneyInput').value); 
+            if (!moneyVal) {
+                alert("급여를 입력해야 계산이 됩니다!");
+                return;
+            }
             let minuteWage = currentMode === 'salary' ? (moneyVal * 10000) / 209 / 60 : moneyVal / 60;
             let totalMin = 0; items.forEach(item => totalMin += (item.time * counts[item.id]));
+            
             if (totalMin > 0) {
                 document.getElementById('resTime').innerText = totalMin;
                 document.getElementById('resMoney').innerText = Math.floor(minuteWage * totalMin).toLocaleString();
                 document.getElementById('result-box').style.display = 'block';
+            } else {
+                alert("아직 아무런 루팡질도 안 하셨군요! 항목을 터치해보세요.");
             }
         }
         function shareKakao() {
